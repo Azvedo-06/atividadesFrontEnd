@@ -1,22 +1,23 @@
 import './App.css'
-import Contador from './trilha02/Contador';
-import Saudacao from './trilha02/Saudacao';
-import ToDolist from './trilha02/ToDolist';
-import ToggleVisibilidade from './trilha02/ToggleVisibilidade';
+import { BrowserRouter, Routes, Route } from "react-router";
+import NavBarHotel from './trilha03/NavBarHotel';
+import HomeHotel from './trilha03/HomeHotel';
+import Rooms from './trilha03/Rooms';
+import RoomDetails from './trilha03/RoomDetails';
+import BookingSuccess from './trilha03/BookingSuccess';
 
 function App() {
 
   return (
-    <div>
-      <h2>01 Contador</h2>
-      <Contador valor={1} />
-      <h2>02 Saudaçâo</h2>
-      <Saudacao nameInicial='adm' />
-      <h2>03 Lista de Tarefas</h2>
-      <ToDolist />
-      <h2>04 Controle de Visibilidade</h2>
-      <ToggleVisibilidade textInicial='adm' />
-    </div>
+    <BrowserRouter>
+      <NavBarHotel/>
+      <Routes>
+        <Route path='/' element={<HomeHotel />} />
+        <Route path='/rooms/:room' element={<Rooms />} />
+        <Route path='/roomDetails' element={<RoomDetails />} />
+        <Route path='/BookingSuccess' element={<BookingSuccess />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
